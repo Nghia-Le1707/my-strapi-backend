@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "team1": {
+      "type": "string"
+    },
+    "team2": {
+      "type": "string"
+    },
+    "bet": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
