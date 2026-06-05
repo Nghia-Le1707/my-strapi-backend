@@ -2,8 +2,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import path from "path";
 
-export default ({ env }: { env: any }): any => {
-  const isProduction = env("NODE_ENV") === "production";
+export default ({ env }: { env: any }): Record<string, any> => {
+  const isProduction = !!env("DATABASE_URL");
 
   return {
     connection: {
