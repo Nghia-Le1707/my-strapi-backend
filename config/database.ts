@@ -7,34 +7,30 @@ export default ({ env }: { env: any }) => {
 
   if (isProduction) {
     return {
+      client: "postgres",
       connection: {
-        client: "postgres",
-        connection: {
-          connectionString: env("DATABASE_URL"),
-          ssl: { rejectUnauthorized: false },
-        },
-        pool: {
-          min: env.int("DATABASE_POOL_MIN", 2),
-          max: env.int("DATABASE_POOL_MAX", 10),
-        },
-        acquireConnectionTimeout: env.int("DATABASE_CONNECTION_TIMEOUT", 60000),
+        connectionString: env("DATABASE_URL"),
+        ssl: { rejectUnauthorized: false },
       },
+      pool: {
+        min: env.int("DATABASE_POOL_MIN", 2),
+        max: env.int("DATABASE_POOL_MAX", 10),
+      },
+      acquireConnectionTimeout: env.int("DATABASE_CONNECTION_TIMEOUT", 60000),
     };
   }
 
   return {
+    client: "sqlite",
     connection: {
-      client: "sqlite",
-      connection: {
-        filename: path.join(
-          __dirname,
-          "..",
-          "..",
-          env("DATABASE_FILENAME", ".tmp/data.db"),
-        ),
-      },
-      useNullAsDefault: true,
-      acquireConnectionTimeout: env.int("DATABASE_CONNECTION_TIMEOUT", 60000),
+      filename: path.join(
+        __dirname,
+        "..",
+        "..",
+        env("DATABASE_FILENAME", ".tmp/data.db"),
+      ),
     },
+    useNullAsDefault: true,
+    acquireConnectionTimeout: env.int("DATABASE_CONNECTION_TIMEOUT", 60000),
   };
 };
